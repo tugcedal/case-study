@@ -44,6 +44,10 @@ sh ./docker_stop_and_optional_remove.sh --rmi
 - From the UI you can easly access the example of request bodies.
 - Swagger UI is available at http://localhost:8080/swagger-ui/index.html#/
 
+### Postman
+- You can import stock exchange.postman_collection.json to your postman
+- You can use folders: Stock, Stock Exchange and Authorization to use Rest API Requests
+
 ### H2 Database
 The H2 database console is available at http://localhost:8080/h2-console
 

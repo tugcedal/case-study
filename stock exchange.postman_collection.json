@@ -1,0 +1,303 @@
+{
+	"info": {
+		"_postman_id": "2233761b-93fd-4f5b-8c7b-7acef2076386",
+		"name": "stock exchange",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Stock",
+			"item": [
+				{
+					"name": "Create Stock",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhc2QiLCJpYXQiOjE3MjI5Njg2NjQsImV4cCI6MTcyMzA1NTA2NH0.GWtJ8Web3KyAmssNUmjpkNtrfeE0MMWXmCE84Wh1dPg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"id\": 1,\r\n        \"name\": \"s1\",\r\n        \"description\": \"stock1\",\r\n        \"currentPrice\": 80\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/stock",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stock"
+							]
+						},
+						"description": "sdf"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Stock",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhc2QiLCJpYXQiOjE3MjI5NjMwNjgsImV4cCI6MTcyMzA0OTQ2OH0.hXJDtxnL9O6Qru2r4fxmtvLetHdWeuZDNm8U983eJFk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/stock/s1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stock",
+								"s1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Stock",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhc2QiLCJpYXQiOjE3MjI5Njc0MjMsImV4cCI6MTcyMzA1MzgyM30.hsiAY9EoZm76l6Iq_fC9PhXVIn07iomP1eAYwVyqL34",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": {\r\n        \"name\": \"s1\",\r\n        \"description\": \"stock1\",\r\n        \"currentPrice\": 10\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/stock/s1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stock",
+								"s1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Stock Exchange",
+			"item": [
+				{
+					"name": "Create Stock Exchange",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhc2QiLCJpYXQiOjE3MjI5NjgzMTksImV4cCI6MTcyMzA1NDcxOX0.Cp2jf2bcv5yozI2Y0q2vmR7yMhffJouCzvBv9PIA4Do",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"name\": \"se1\",\r\n    \"description\": \"stockexchange1\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/stock-exchange",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stock-exchange"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Stock Exchange",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhc2QiLCJpYXQiOjE3MjI5NjMwNjgsImV4cCI6MTcyMzA0OTQ2OH0.hXJDtxnL9O6Qru2r4fxmtvLetHdWeuZDNm8U983eJFk\"",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/stock-exchange/se1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stock-exchange",
+								"se1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Stock From Stock Exchange",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhc2QiLCJpYXQiOjE3MjI5NjMwNjgsImV4cCI6MTcyMzA0OTQ2OH0.hXJDtxnL9O6Qru2r4fxmtvLetHdWeuZDNm8U983eJFk\"",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/stock-exchange/se1/stock/s1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stock-exchange",
+								"se1",
+								"stock",
+								"s1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Stock To Stock Exchange",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhc2QiLCJpYXQiOjE3MjI5NjgzMTksImV4cCI6MTcyMzA1NDcxOX0.Cp2jf2bcv5yozI2Y0q2vmR7yMhffJouCzvBv9PIA4Do",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"name\": \"s1\",\r\n    \"description\": \"stock1\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/stock-exchange/se1/stock/s1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"stock-exchange",
+								"se1",
+								"stock",
+								"s1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"username\": \"User\",\r\n    \"password\": \"pass\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/authentication/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"authentication",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data\": {\r\n    \"username\": \"User\",\r\n    \"password\": \"pass\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/authentication/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"authentication",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
