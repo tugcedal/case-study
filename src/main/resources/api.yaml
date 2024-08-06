@@ -1,0 +1,452 @@
+openapi: 3.0.1
+info:
+  title: Stock Exchange Management API
+  description: API for managing stock exchanges and stocks.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api/v1
+paths:
+  /stock-exchange/{name}/stock/{stockName}:
+    delete:
+      operationId: deleteStockFromStockExchange
+      summary: Delete a stock from the stock exchange
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Name of the stock exchange
+        - name: stockName
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Name of the stock
+      responses:
+        '200':
+          description: Stock deleted from the stock exchange
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockExchange'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      operationId: updateStockExchangeWithStock
+      summary: Add a stock to the stock exchange
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Name of the stock exchange
+        - name: stockName
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Name of the stock
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StockExchangeREQ'
+            example:
+              name: StockExchange1
+              description: Stock Exchange 1
+      responses:
+        '200':
+          description: Stock added to the stock exchange
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockExchange'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /stock-exchange/{name}:
+    get:
+      operationId: getStockExchangeByName
+      summary: Get a stock exchange with all its stocks
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Name of the stock exchange
+      responses:
+        '200':
+          description: Stock exchange with all its stocks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockExchange'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /stock-exchange:
+    post:
+      operationId: postStockExchange
+      summary: Add a stock exchange
+      parameters:
+        - name: name
+          required: true
+          schema:
+            type: string
+          description: Name of the stock exchange
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StockExchangeREQ'
+            example:
+              name: StockExchange1
+              description: Stock Exchange 1
+      responses:
+        '200':
+          description: Stock added to the stock exchange
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockExchange'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /stock:
+    post:
+      operationId: postStock
+      summary: Create a stock
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StockREQ'
+            example:
+              data:
+                name: Stock1
+                description: Stock One
+                currentPrice: 10
+
+      responses:
+        '201':
+          description: Stock created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stock'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /stock/{name}:
+    patch:
+      operationId: updateStock
+      summary: Update the price of a stock
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Name of the stock exchange
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StockREQ'
+      responses:
+        '200':
+          description: Stock price updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stock'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteStock
+      summary: Delete a stock from the system
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Name of the stock exchange
+      responses:
+        '200':
+          description: Stock deleted from the system
+        '404':
+          description: Stock not found
+  /authentication/login:
+    post:
+      operationId: login
+      summary: Authenticate user and return a token
+      requestBody:
+        description: User credentials for login
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserREQ'
+      responses:
+        '200':
+          description: Successfully authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /authentication/register:
+    post:
+      operationId: register
+      summary: Register user and return user info
+      requestBody:
+        description: User credentials for register
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserREQ'
+      responses:
+        '200':
+          description: Successfully authenticated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  securityDefinitions:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    StockREQ:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Stock'
+    StockExchangeREQ:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/StockExchange'
+    UserREQ:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/User'
+    Stock:
+      type: object
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+        description:
+          type: string
+        currentPrice:
+          type: number
+          format: double
+        lastUpdate:
+          type: string
+          readOnly: true
+          format: LocalDateTime
+    StockExchange:
+      type: object
+      readonly:
+        - stocks
+      properties:
+        id:
+          type: string
+          readOnly: true
+        name:
+          type: string
+        description:
+          type: string
+        liveInMarket:
+          readOnly: true
+          type: boolean
+          default: false
+        stocks:
+          type: array
+          items:
+            - $ref: '#/components/schemas/Stock'
+    User:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+          writeOnly: true
+      required:
+        - username
+        - password
+    AuthResponse:
+      type: object
+      properties:
+        username:
+          type: string
+          example: alice
+          description: Username of the user
+        token:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+          description: JWT token
+      required:
+        - token
+        - username
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+        error:
+          type: string
+        message:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+security:
+  - bearerAuth: []
